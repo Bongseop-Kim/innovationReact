@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# 이노베이션 코딩테스트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### 참가자 : 김봉섭
 
-## Available Scripts
+#### 기술 스택 : jdk 11, Mysql 8, Mybatis, React
 
-In the project directory, you can run:
+<br>
 
-### `npm start`
+## API
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### GET : 전체 리스트 조회
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+http://13.125.31.169:8080/list
 
-### `npm test`
+### POST : 리스트 생성
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+http://13.125.31.169:8080/list
 
-### `npm run build`
+### DELETE : 리스트 삭제
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+http://13.125.31.169:8080/list
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### UPDATE : 리스트 수정
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+http://13.125.31.169:8080/list/update
 
-### `npm run eject`
+<br>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 내용
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 에러처리
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- 에러처리는 spring 에서만 구현했습니다. react 에서는 catch를 사용해 에러시 서버로 받은 responseMessage만 보여줍니다.
+  1. 선택 항목 10개 초과시
+  2. 유효성 검사 (공백 불가, income 양수만 가능)
+  3. update, delete 해당하는 id 확인
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### reponseDefault
 
-## Learn More
+- 프로트엔드와 소통을 편하게 하기 위해 response 형태를 만들어 사용했습니다. (Nest.js 에서 자동으로 되던 작업이 없어서 추가했습니다.)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  {
+  "success": true,
+  "statusCode": 200,
+  "responseMessage": "리스트 조회 성공",
+  "data": null
+  }
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 배포
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 프리티어 버전 이용시 서버가 성능이 좋지 못해 한 서버에 프론트, 백 모두 올리는 것은 무리라고 생각하여 따로 배포 하였습니다. 이를 위해 cors 에러 방지를 위한 작업을 했습니다.
