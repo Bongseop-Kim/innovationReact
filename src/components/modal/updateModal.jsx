@@ -21,7 +21,7 @@ const UpdateModal = ({ showUpdateModal, setShowUpdateModal, checkedList, setChec
   const submit = () => {
     console.log(checkedList);
     axios
-      .post("http://localhost:8080/list/update", checkedList)
+      .post("http://43.200.254.247:8080/list", checkedList)
       .then((res) => {
         window.location.reload();
       })

@@ -23,7 +23,7 @@ const CreateModal = ({ showModal, setShowModal }) => {
 
   const submit = () => {
     axios
-      .post("http://localhost:8080/list", list)
+      .post("http://43.200.254.247:8080/list", list)
       .then((res) => {
         window.location.reload();
       })
