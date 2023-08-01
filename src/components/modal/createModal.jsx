@@ -23,7 +23,7 @@ const CreateModal = ({ showModal, setShowModal }) => {
 
   const submit = () => {
     axios
-      .post("http://43.202.44.48:8080/list", list)
+      .post(process.env.REACT_APP_BASE_URL, list)
       .then((res) => {
         window.location.reload();
       })

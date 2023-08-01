@@ -21,7 +21,7 @@ const UpdateModal = ({ showUpdateModal, setShowUpdateModal, checkedList, setChec
   const submit = () => {
     console.log(checkedList);
     axios
-      .post("http://43.202.44.48:8080/list/update", checkedList)
+      .post(process.env.REACT_APP_BASE_URL + "/update", checkedList)
       .then((res) => {
         window.location.reload();
       })
