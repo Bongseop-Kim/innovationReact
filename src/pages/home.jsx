@@ -21,7 +21,7 @@ const Home = () => {
   const [sample, setSample] = useState([]);
 
   useEffect(() => {
-    axios.get("http://13.125.31.169:8080/list").then((res) => setSample(res.data.data));
+    axios.get("http://localhost:8080/list").then((res) => setSample(res.data.data));
   }, []);
 
   const handleOptionChange = (e) => {
@@ -51,7 +51,7 @@ const Home = () => {
   const handleDelete = () => {
     const ids = checkedList.map((item) => item.id);
     axios
-      .delete("http://13.125.31.169:8080/list", { data: ids })
+      .delete("http://localhost:8080/list", { data: ids })
       .then((res) => {
         window.location.reload();
       })
