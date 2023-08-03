@@ -10,19 +10,19 @@
 
 ### GET : 전체 리스트 조회
 
-http://13.125.31.169:8080/list
+http://localhost:8080/list
 
 ### POST : 리스트 생성
 
-http://13.125.31.169:8080/list
+http://localhost:8080/list
 
 ### DELETE : 리스트 삭제
 
-http://13.125.31.169:8080/list
+http://localhost:8080/list
 
 ### UPDATE : 리스트 수정
 
-http://13.125.31.169:8080/list/update
+http://localhost:8080/list/update
 
 <br>
 
@@ -48,4 +48,4 @@ http://13.125.31.169:8080/list/update
 
 ### 배포
 
-- 프리티어 버전 이용시 서버가 성능이 좋지 못해 한 서버에 프론트, 백 모두 올리는 것은 무리라고 생각하여 따로 배포 하였습니다. 이를 위해 cors 에러 방지를 위한 작업을 했습니다.
+http://15.164.228.220:8080/home
