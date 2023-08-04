@@ -53,16 +53,22 @@ http://localhost:8080/list/update
 ```java
 // validation 사용
 // 인자 값이 배열인 경우 유효성 검사를 위해 ValidList 클래스 사용
- private DefaultRes<List<String>> processErrors(BindingResult bindingResult) {
-        //에러 메시지를 배열에 담는 로직
-        Set<String> uniqueErrorMessages = new HashSet<>();
-        //중복된 메시지는 Set를 이용해 중복을 제거
-
-        for (FieldError error : bindingResult.getFieldErrors()) {
-            uniqueErrorMessages.add(error.getDefaultMessage());
+ @PostMapping("")
+    public ResponseEntity insertList(@RequestBody @Valid ValidList<ListReq> listReqs, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            //유효성 검사
+            DefaultRes<List<String>> errorResponse = processErrors(bindingResult);
+            return ResponseEntity.badRequest().body(errorResponse);
         }
 
-        return DefaultRes.res(false, StatusCode.BAD_REQUEST, String.join(", ", uniqueErrorMessages));
+        if (listReqs.size() > 10) {
+            // 선택 사항이 10개 이상이면 에러를 반환하는 로직
+            return ResponseEntity.badRequest().body(DefaultRes.res(false, StatusCode.BAD_REQUEST, "항목은 최대 10개 까지 선택 가능합니다."));
+        }
+
+        listSvc.doInsert(listReqs);
+
+        return new ResponseEntity(DefaultRes.res(true,StatusCode.CREATED, ResponseMessage.CREATE_LIST), HttpStatus.OK);
     }
 ```
 
