@@ -12,7 +12,7 @@
 
 http://localhost:8080/list
 
-### POST : 리스트 생성
+### CREATE : 리스트 생성
 
 http://localhost:8080/list
 
