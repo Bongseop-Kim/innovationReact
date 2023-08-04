@@ -122,3 +122,5 @@ List<Integer> nonExistentIds = new ArrayList<>();
 ## 배포
 
 http://15.164.228.220:8080/home
+
+https://f2fc-112-221-41-90.ngrok-free.app/
